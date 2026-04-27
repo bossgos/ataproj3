@@ -1,37 +1,43 @@
 {% extends 'movies/base.html' %}
 
 {% block content %}
-<h1>Dodaj / Edytuj film</h1>
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <h1 class="mb-4">Dodaj / Edytuj film</h1>
 
-<form method="post" enctype="multipart/form-data" class="mt-4">
-    {% csrf_token %}
+        <form method="post" enctype="multipart/form-data" class="shadow p-4 rounded bg-light">
+            {% csrf_token %}
 
-    <div class="mb-3">
-        {{ form.title.label_tag }} 
-        {{ form.title }}
+            <div class="mb-3">
+                {{ form.title.label_tag }} 
+                {{ form.title }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.description.label_tag }} 
+                {{ form.description }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.release_year.label_tag }} 
+                {{ form.release_year }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.rating.label_tag }} 
+                {{ form.rating }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.cover.label_tag }} 
+                {{ form.cover }}
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success">Zapisz</button>
+                <a href="{% url 'movie_list' %}" class="btn btn-secondary">Anuluj</a>
+            </div>
+        </form>
     </div>
-
-    <div class="mb-3">
-        {{ form.description.label_tag }} 
-        {{ form.description }}
-    </div>
-
-    <div class="mb-3">
-        {{ form.release_year.label_tag }} 
-        {{ form.release_year }}
-    </div>
-
-    <div class="mb-3">
-        {{ form.rating.label_tag }} 
-        {{ form.rating }}
-    </div>
-
-    <div class="mb-3">
-        {{ form.cover.label_tag }} 
-        {{ form.cover }}
-    </div>
-
-    <button type="submit" class="btn btn-success">Zapisz</button>
-    <a href="{% url 'movie_list' %}" class="btn btn-secondary">Anuluj</a>
-</form>
+</div>
 {% endblock %}
